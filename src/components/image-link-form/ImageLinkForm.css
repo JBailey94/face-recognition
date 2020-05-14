@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+.form {
+    width: 700px;
+    background: rgba(8, 8, 8, 0.1);     
+}
+
+p {
+    font-size: 50px;
+    font-weight: bold;
+    color: #fff;
+}
+

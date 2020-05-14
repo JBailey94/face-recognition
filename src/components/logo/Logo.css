@@ -1,0 +1,16 @@
+.Tilt {
+    background: linear-gradient(to bottom, rgb(16, 94, 139) 60%,rgb(0, 217, 255));
+}
+
+.Tilt-inner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 70%;
+    height: 70%;
+}
