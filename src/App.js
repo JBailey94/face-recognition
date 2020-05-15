@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Navigation from './components/navigation/Navigation';
 import ImageLinkForm from './components/image-link-form/ImageLinkForm';
 import Rank from './components/rank/Rank';
+import FaceRecognition from './components/face-recognition/FaceRecognition';
 import Particles from 'react-particles-js';
+import Clarifai from 'clarifai';
 import './App.css';
 
 const particleOptions = { 
@@ -55,17 +57,38 @@ const particleOptions = {
   }
 }
     
+// Clarifai initialize
+const app = new Clarifai.App({
+  apiKey: '98d70806f17a461a8e9f977797f853ae'
+ });
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      input: ''
+      input: '',
+      imageUrl: ''
     }
   }
 
   onInputChange = (event) => {
     console.log(event);
+    this.setState({input: event.target.value})
+  }
+
+  // face
+  // https://am23.mediaite.com/tms/cnt/uploads/2020/03/trump-coronavirus-face-touch.jpg
+
+  onButtonSubmit = () => {
+    this.setState({imageUrl: this.state.input});
+    app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input).then(
+      function(response) {
+        console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
+      },
+      function(err) {
+        // there was an error
+      }
+    );
   }
 
   render() {
@@ -73,9 +96,9 @@ class App extends Component {
       <div className="App"> 
         <Navigation />      
         <Rank />
-        <ImageLinkForm onInputChange={this.onInputChange}/>
-        <Particles className='particles' params={ particleOptions }/>
-      {/* <FaceRecognition /> */}
+        <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
+        <Particles className='particles' params={ particleOptions } />
+        <FaceRecognition imageUrl={this.state.imageUrl} />
     </div>
     )
   }  
