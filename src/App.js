@@ -96,9 +96,6 @@ class App extends Component {
     this.setState({input: event.target.value})
   }
 
-  // face
-  // https://am23.mediaite.com/tms/cnt/uploads/2020/03/trump-coronavirus-face-touch.jpg
-
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
     app.models.predict(
