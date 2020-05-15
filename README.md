@@ -1,5 +1,8 @@
 <a href="https://jbailey94.github.io/face-recognition/">Test App Here!</a>
 
+<h1> Instructions </h1>
+<h2> Find an image link online then paste it into the text box. After that click Detect! </h2>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
