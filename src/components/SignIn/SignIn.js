@@ -19,7 +19,7 @@ class SignIn extends React.Component {
 
     onSubmitSignIn = () => {
         // fetch by default does a GET request, instead should be POST
-        fetch('http://localhost:3000/signin', {
+        fetch('https://dry-stream-32037.herokuapp.com/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'}, // header takes an object
             body: JSON.stringify({

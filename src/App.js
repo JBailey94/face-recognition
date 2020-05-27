@@ -102,9 +102,11 @@ class App extends Component {
     this.setState({input: event.target.value})
   }
 
+  // https://dry-stream-32037.herokuapp.com/imageurl
+
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-      fetch('http://localhost:3000/imageurl', {
+      fetch('https://dry-stream-32037.herokuapp.com/imageurl', {
             method: 'post',
               headers: {'Content-Type': 'application/json'}, // header takes an object
               body: JSON.stringify({
@@ -114,7 +116,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response =>  {
       if (response) {
-        fetch('http://localhost:3000/image', {
+        fetch('https://dry-stream-32037.herokuapp.com/image', {
           method: 'put',
             headers: {'Content-Type': 'application/json'}, // header takes an object
             body: JSON.stringify({
